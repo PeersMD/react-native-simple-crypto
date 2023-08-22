@@ -153,12 +153,12 @@ public class RCTRsaUtils extends ReactContextBaseJavaModule {
     WritableMap jwk = Arguments.createMap();
     jwk.putString("n", toString(keyStruct.getModulus(), true));
     jwk.putString("e", toString(keyStruct.getPublicExponent(), false));
-    jwk.putString("d", toString(keyStruct.getPrivateExponent(), false));
+    jwk.putString("d", toString(keyStruct.getPrivateExponent(), true));
     jwk.putString("p", toString(keyStruct.getPrime1(), true));
     jwk.putString("q", toString(keyStruct.getPrime2(), true));
     jwk.putString("dp", toString(keyStruct.getExponent1(), true));
     jwk.putString("dq", toString(keyStruct.getExponent2(), true));
-    jwk.putString("qi", toString(keyStruct.getCoefficient(), false));
+    jwk.putString("qi", toString(keyStruct.getCoefficient(), true));
 
     return jwk;
   }
