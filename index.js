@@ -160,8 +160,34 @@ const PBKDF2 = {
 };
 
 const RSA = {
-  ...NativeModules.Rsa,
-  ...NativeModules.RsaUtils,
+    generateKeys: async function generateKeys(keySize) { 
+      const rc = await NativeModules.Rsa.generateKeys(keySize);
+      return rc;
+    },
+    importKey: async function importKey(jwk) {
+      const rc = await NativeModules.RsaUtils.importKey(jwk);
+      return rc;
+    },
+    exportKey: async function exportKey(pkcs1) {
+      const rc = await NativeModules.RsaUtils.exportKey(pkcs1);
+      return rc;
+    },
+    encrypt: async function encrypt(data, key) {
+      const rc = await NativeModules.Rsa.encrypt(data, key);
+      return rc;
+    },
+    decrypt: async function decrypt(data, key) {
+      const rc = await NativeModules.Rsa.decrypt(data, key);
+      return rc;
+    },
+    sign: async function sign(data, key, hash) {
+      const rc = await NativeModules.Rsa.sign(data, key, hash);
+      return rc;
+    },
+    verify: async function verify(data, secretToVerify, key, hash) {
+      const rc = await NativeModules.Rsa.verify(data, secretToVerify, key, hash);
+      return rc;
+    },
 };
 
 const utils = {
